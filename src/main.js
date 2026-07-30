@@ -80,18 +80,17 @@ function checkLastPage() {
       title: 'Warning',
       message: `We're sorry, but you've reached the end of search results.`,
       position: 'topRight',
-    });
-    return false;
+    });    
   } else {
-    showLoadMoreButton();
-    return true;
+    showLoadMoreButton();    
   }
 }
 
-async function loadMore() {
+async function loadMore() {  
   page++;
-  if (!checkLastPage()) return;
   try {
+    showLoader();
+    hideLoadMoreButton();
     const data = await getImagesByQuery(lastQuery, page, PER_PAGE);
     if (!data.hits || data.hits.length === 0) {
       iziToast.error({
@@ -114,6 +113,9 @@ async function loadMore() {
         'An error occurred while fetching images. Please try again later.',
       position: 'topRight',
     });
+  } finally {
+    hideLoader();
+    checkLastPage();
   }
 }
 
