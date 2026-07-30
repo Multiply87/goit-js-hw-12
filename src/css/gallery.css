@@ -50,3 +50,14 @@
   font-weight: bold;
   margin-bottom: 2px;
 }
+
+.load-more {
+  display: none;
+  margin-top: 10px;
+  padding: 5px;
+  margin-inline: auto;
+}
+
+.load-more.active {
+  display: block;
+}
