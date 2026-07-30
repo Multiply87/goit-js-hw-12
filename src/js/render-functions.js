@@ -30,7 +30,7 @@ export function createGallery(images) {
     )
     .join("");
 
-  galleryContainer.innerHTML = markup;
+  galleryContainer.innerHTML += markup;
   lightbox.refresh();
 }
 
@@ -48,4 +48,12 @@ export function hideLoader() {
   if (loaderElement) {
     loaderElement.classList.remove("active");
   }
+}
+
+export function showLoadMoreButton() {
+  document.querySelector("#load-more").classList.add("active");
+}
+
+export function hideLoadMoreButton() {
+  document.querySelector("#load-more").classList.remove("active");
 }
